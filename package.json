@@ -1,19 +1,26 @@
 {
-  "name": "travel-agency",
+  "name": "EZ-Rental",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple car rental agency web application.",
   "main": "index.js",
+  "author": "Joseph Schwarz",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "jade": "^1.11.0",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
+    "nodemon": "^1.9.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pug": "^0.1.0"
-  }
+  },
+  "repository": {}
 }

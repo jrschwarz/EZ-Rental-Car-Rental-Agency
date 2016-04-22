@@ -1,30 +1,19 @@
 var express = require('express'),
-	logger = require('morgan'),
-	bodyParser = require('body-parser'),
-	mongoose = require('mongoose');
+	mongoose = require('mongoose'),
+	passport = require('passport'),
+	LocalStrategy = require('passport-local').Strategy;
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
-app.set('views', __dirname + '/app/views');
-app.set('view engine', 'jade');
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+var config = require('./server/config/config')[env];
 
-// mongoose.connect('mongodb://localhost/carrentalagency');
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'Connection error...'));
-// db.once('open', function callback() {
-// 	console.log('carrentalagency db opened');
-// });
+require('./server/config/express')(app, config);
 
-app.get('*', function(req, res) {
-	res.render('admin');
-});
+require('./server/config/mongoose')(config);
 
-var port = 3000;
-app.listen(port);
-console.log('Listening on port ' + port + '...');
+require('./server/config/route')(app);
+
+app.listen(config.port);
+console.log('Listening on port ' + config.port + '...');

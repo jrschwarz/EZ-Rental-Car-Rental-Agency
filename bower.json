@@ -18,10 +18,13 @@
   "dependencies": {
     "jquery": "^2.2.3",
     "toastr": "^2.1.2",
-    "angular": "^1.5.3",
-    "angular-resource": "^1.5.3",
-    "angular-route": "^1.5.3",
     "bootstrap": "^3.3.6",
-    "font-awesome": "^4.6.1"
+    "font-awesome": "^4.6.1",
+    "angular": "^1.5.4",
+    "angular-route": "^1.5.3",
+    "angular-resource": "^1.5.3"
+  },
+  "resolutions": {
+    "angular": "^1.5.4"
   }
 }
