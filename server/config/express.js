@@ -7,8 +7,8 @@ var express = require('express'),
 
 
 module.exports = function(app, config) {
-	app.set('views', config.rootPath + '/server/views');
-	app.set('view engine', 'jade');
+	// app.set('views', config.rootPath + '/public');
+	// app.set('view engine', 'html');
 	app.use(logger('dev'));
 	app.use(cookieParser());
 	app.use(bodyParser.urlencoded({extended: true}));

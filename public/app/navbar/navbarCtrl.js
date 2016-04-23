@@ -1,4 +1,4 @@
-angular.module('app').controller('navbarCtrl', function($scope, $window, $http) {
+angular.module('app').controller('navbarCtrl', function($scope, $window, $http, $location) {
 
 	$scope.isLoggedIn = true;
 

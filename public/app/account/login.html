@@ -1,0 +1,36 @@
+<style>
+	body {
+		background-color: #f5f5f5;
+	}
+</style>
+
+<div class="container loginUserContainer">
+	<div class="row">
+		<div class="col-xs-12 loginPgLogo text-center">
+			<img src="images/ezRental-logo.png">
+		</div>
+	</div>
+
+	<div row>
+		<div class="loginUserBtnContainer breadcrumb text-center col-xs-12">
+			<p> Choose a user: </p>
+			<div class="row">
+				<div class="col-xs-12 customerLoginBtn">
+					<button class="btn btn-lg btn-default" name="userRole" ng-click="login('Customer')">Customer</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 employeeLoginBtn">
+					<button class="btn btn-lg btn-default" name="userRole" ng-click="login('Employee')">Employee</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 managerLoginBtn">
+					<button class="btn btn-lg btn-default" name="userRole" ng-click="login('Manager')">Manager</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		

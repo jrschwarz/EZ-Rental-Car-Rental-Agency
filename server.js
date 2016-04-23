@@ -13,7 +13,7 @@ require('./server/config/express')(app, config);
 
 require('./server/config/mongoose')(config);
 
-require('./server/config/route')(app);
+require('./server/config/route')(app, config);
 
 app.listen(config.port);
 console.log('Listening on port ' + config.port + '...');
