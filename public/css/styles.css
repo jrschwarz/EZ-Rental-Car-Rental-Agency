@@ -4,6 +4,23 @@ body {
 	font-weight: 300;
 }
 
+#createReservationModal .vehicleImage {
+	width: 230px;
+}
+
+#dateRangePickerIcon {
+	background-color: #337AB7;
+	cursor: hand;
+}
+
+#dateRangePickerIcon i {
+	color: white;
+}
+
+#dateRangePickerInput {
+	width: 200px;
+}
+
 .loginUserContainer {
 	width: 350px;
 	height: 350px;
@@ -46,6 +63,12 @@ body {
 	margin-top: 20px;
 	padding-top: 20px;
 	background-color: #f5f5f5;
+	border: 0;
+}
+
+.modal-body {
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 #searchFormSubmitBtn {
@@ -88,6 +111,16 @@ body {
 	font-weight: bold;
 }
 
+.noReservations {
+	text-align: center;
+	margin-top: 25px;
+}
+
+.pageTitle h3{
+	font-size: 2em;
+	margin-bottom: 20px;
+}
+
 .searchContainer {
 	margin-top: -30px;
 	padding-top: 30px;
@@ -100,7 +133,7 @@ body {
 	box-shadow: 0 3px 0 #ccc;
 }
 
-.reservation img {
+.reservation img, .reserveAVehicle img {
 	width: 200px;
 }
 
@@ -114,13 +147,19 @@ body {
 	background-color: #fff;
 }
 
+.reserveAVehicle {
+	box-shadow: 0 3px 0 #ccc;
+	background-color: #fff;
+}
+
 .tabbedView {
 	margin-top: -20px;
 }
 
-.reservation .reservedVehicle {
+.reservation .reservedVehicle, .reserveAVehicle .reservedVehicle {
 	border-bottom: 1px solid #DDDDDD;
 	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 .reservation .reservedVehicle:last-child {
@@ -130,6 +169,10 @@ body {
 
 .reservation .reservedVehicle .btn {
 	margin-left: 10px;
+}
+
+#toast-container > div {
+    opacity:1;
 }
 
 .noButton {

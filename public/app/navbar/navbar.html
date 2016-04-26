@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" ng-controller="navbarCtrl" ng-show="isLoggedIn">
+<nav class="navbar navbar-default" ng-controller="navbarCtrl" ng-show="isLoggedIn()==true">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -14,9 +14,9 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-        		<li><a href="/admin">Admin</a></li>
+        		<li ng-if="isAdmin()==true"><a href="/admin">Admin</a></li>
         		<li><a href="/reserve">Reserve</a></li>
-        		<li><a href="#">My Account</a></li>
+        		<li><a ng-click="isLoggedIn()">My Account</a></li>
         		<li><a href="#" ng-click="logout()">Logout</a></li>
     		</ul>
 		</div>

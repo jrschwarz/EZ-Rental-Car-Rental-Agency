@@ -1,21 +1,25 @@
-angular.module('app').controller('navbarCtrl', function($scope, $window, $http, $location) {
-
-	$scope.isLoggedIn = true;
+angular.module('app').controller('navbarCtrl', function($scope, $window, $http, $location, AuthenticationService) {
 
 	$scope.goHome = function() {
 		$window.location.href = "/";
 	};
 
-	logoutSuccess = function() {
-		$window.location.href = "/";
+	$scope.isAdmin = function() {
+		return AuthenticationService.hasAdminRights();
 	};
 
-	logoutError = function() {
-		toastr.failure("Failed to logout");
+	$scope.isLoggedIn = function() {
+		if(AuthenticationService.getUser() != undefined) return true;
+		else return false;
 	};
 
 	$scope.logout = function() {
-		$http.post('/logout', {}).then(logoutSuccess, logoutError);
+		AuthenticationService.logout();
+		$location.path('/');
+		toastr.options = {
+			"timeOut": "1000"
+		};
+		toastr.success('Successfully logged out');
 	};
 
 });

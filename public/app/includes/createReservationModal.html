@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div id="createReservationModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Reserve New Vehicle</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h3>{{vehicle.make}} {{vehicle.model}}</h3>
+          <img class="vehicleImage" ng-src="{{vehicleToReserve.image}}" alt="{{vehicleToReserve.make}} {{vehicleToReserve.model}}">
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="VehicleInfo">
+              <h4>Vehicle Info</h4>
+              <p><em>Information about this vehicle</em></p>
+              <p>Year: {{vehicleToReserve.year}}</p>
+              <p>Color: {{vehicleToReserve.color}}</p>
+              <p>Access: {{vehicleToReserve.access}}</p>
+              <p>Passengers: {{vehicleToReserve.passengers}}</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <h4>Price</h4>
+            <p>{{vehicleToReserve.price | currency: $}} per day</p>
+            <br>
+            <label>Reservation dates</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="dateRangePickerIcon"><i class="fa fa-calendar"></i></span>
+              <input type="text" class="form-control" id="dateRangePickerInput" name="daterange">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="userInfo">
+            <h3>Driver Details</h3>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'center',
+    drops: 'up',
+    autoApply: true
+  });
+
+  $('#dateRangePickerIcon').on('click', function() {
+      $('input[name="daterange"]').focus();
+  });
+</script>
+
+
+
+

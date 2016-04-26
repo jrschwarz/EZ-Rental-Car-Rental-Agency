@@ -11,7 +11,82 @@ module.exports = function(config) {
 		console.log('ezrental db opened');
 
 		mongoose.connection.db.dropCollection('users');
+		mongoose.connection.db.dropCollection('vehicles');
 		
+		// Create Vehicle Collection
+		var Vehicle = require('../models/vehicle.js');
+		Vehicle.create({
+			make: "Make 1",
+			model: "Model 1",
+			year: 2008,
+			color: "Silver",
+			access: "4-door",
+			passengers: 4,
+			price: 55,
+			image: "/images/car1.png",
+			reserved: true,
+			owner: {
+				userId: null
+			}
+		});
+		Vehicle.create({
+			make: "Make 2",
+			model: "Model 2",
+			year: 2009,
+			color: "Black",
+			access: "4-door",
+			passengers: 4,
+			price: 65,
+			image: "/images/car2.png",
+			reserved: true,
+			owner: {
+				userId: null
+			}
+		});
+		Vehicle.create({
+			make: "Make 3",
+			model: "Model 3",
+			year: 2010,
+			color: "Teal",
+			access: "4-door",
+			passengers: 4,
+			price: 60,
+			image: "/images/car3.png",
+			reserved: false,
+			owner: {
+				userId: null
+			}
+		});
+		Vehicle.create({
+			make: "Make 4",
+			model: "Model 4",
+			year: 2011,
+			color: "White",
+			access: "4-door",
+			passengers: 4,
+			price: 75,
+			image: "/images/car4.png",
+			reserved: false,
+			owner: {
+				userId: null
+			}
+		});
+		Vehicle.create({
+			make: "Make 5",
+			model: "Model 5",
+			year: 2010,
+			color: "Dark Gray",
+			access: "4-door",
+			passengers: 4,
+			price: 90,
+			image: "/images/car5.png",
+			reserved: false,
+			owner: {
+				userId: null
+			}
+		});
+		
+
 		var userSchema = mongoose.Schema ({
 			role: String
 		});

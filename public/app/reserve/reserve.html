@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div ng-include="'app/includes/search-bar.html'"></div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row text-center pageTitle">
+		<div class="col-xs-12">
+			<h3><span class="label label-info"><i class="fa fa-md fa-car"></i> Reserve a Vehicle</span></h3>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid main-content">
+	<div class="container-fluid">
+		<div class="row">
+				<div class="col-xs-12 reserveAVehicle">
+					<div class="row reservedVehicle noReservations" ng-if="vehicles.length==0">
+						<h5>There are currently no available vehicles to reserve.</h5>
+					</div>
+					<div class="row reservedVehicle" ng-repeat="vehicle in vehicles | orderBy: 'make'">
+						<div class="col-sm-4 col-xs-12 text-center">
+							<h3>{{vehicle.make}} {{vehicle.model}}</h3>
+							<img ng-src="{{vehicle.image}}">
+						</div>
+						<div class="col-sm-8 col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<div class="VehicleInfo">
+										<h4>Vehicle Info</h4>
+										<p><em>Information about this vehicle</em></p>
+										<p>Year: {{vehicle.year}}</p>
+										<p>Color: {{vehicle.color}}</p>
+										<p>Access: {{vehicle.access}}</p>
+										<p>Passengers: {{vehicle.passengers}}</p>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<h4>Price</h4>
+									<p>{{vehicle.price | currency: $}} per day</p>
+								</div>
+							</div>
+							<div class="editButtons text-right">
+								<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createReservationModal" ng-click="reserveVehicle(vehicle)">Reserve Vehicle</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-include="'app/includes/createReservationModal.html'"></div>
+
+</div>

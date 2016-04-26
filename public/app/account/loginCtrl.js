@@ -1,10 +1,12 @@
-angular.module('app').controller('loginCtrl', function($scope, $http, $location) {
+angular.module('app').controller('loginCtrl', function($scope, $http, $location, AuthenticationService) {
 
 	$scope.login = function(user) {
 
-		console.log(user);
+		AuthenticationService.login(user);
 		$location.path('/admin');
-		toastr.options.timeOut = 1000;
-		toastr.success('Successfully logged in as ' + user);
+		toastr.options = {
+			"timeOut": "1000"
+		};
+		toastr.success('Successfully logged in', user);
 	};
 });
