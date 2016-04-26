@@ -16,7 +16,7 @@ module.exports = function(config) {
 		// Create Vehicle Collection
 		var Vehicle = require('../models/vehicle.js');
 		Vehicle.create({
-			make: "Make 1",
+			make: "Make",
 			model: "Model 1",
 			year: 2008,
 			color: "Silver",
@@ -30,7 +30,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
-			make: "Make 2",
+			make: "Make",
 			model: "Model 2",
 			year: 2009,
 			color: "Black",
@@ -44,7 +44,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
-			make: "Make 3",
+			make: "Make",
 			model: "Model 3",
 			year: 2010,
 			color: "Teal",
@@ -58,7 +58,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
-			make: "Make 4",
+			make: "Make",
 			model: "Model 4",
 			year: 2011,
 			color: "White",
@@ -72,7 +72,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
-			make: "Make 5",
+			make: "Make",
 			model: "Model 5",
 			year: 2010,
 			color: "Dark Gray",
