@@ -28,10 +28,18 @@
             <h4>Price</h4>
             <p>{{vehicleToReserve.price | currency: $}} per day</p>
             <br>
-            <label>Reservation dates</label>
-            <div class="input-group">
-              <span class="input-group-addon" id="dateRangePickerIcon"><i class="fa fa-calendar"></i></span>
-              <input type="text" class="form-control" id="dateRangePickerInput" name="daterange">
+            <div class="reservationDates">
+              <label>Reservation dates</label>
+              <p>From:</p>
+              <div class="input-group">
+                <span class="input-group-addon dateRangePickerIcon"><i class="fa fa-calendar"></i></span>
+                <input type="text" class="form-control dateRangePickerInput" name="daterange">
+              </div>
+              <p>To:</p>
+              <div class="input-group">
+                <span class="input-group-addon dateRangePickerIcon"><i class="fa fa-calendar"></i></span>
+                <input type="text" class="form-control dateRangePickerInput" name="daterange">
+              </div>
             </div>
           </div>
         </div>
@@ -51,12 +59,15 @@
 
 <script>
   $('input[name="daterange"]').daterangepicker({
-    opens: 'center',
-    drops: 'up'
+    "parentEl": "#createReservationModal",
+    opens: 'left',
+    drops: 'up',
+    autoApply: true,
+    singleDatePicker: true
   });
 
-  $('#dateRangePickerIcon').on('click', function() {
-      $('input[name="daterange"]').focus();
+  $('.dateRangePickerIcon').on('click', function() {
+      $(this).parent('.input-group').find('input[name="daterange"]').focus();
   });
 </script>
 

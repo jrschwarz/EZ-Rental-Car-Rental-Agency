@@ -8,18 +8,15 @@ body {
 	width: 230px;
 }
 
-#dateRangePickerIcon {
-	background-color: #337AB7;
+.dateRangePickerIcon {
 	cursor: hand;
 }
 
-#dateRangePickerIcon i {
-	color: white;
-}
-
-#dateRangePickerInput {
+.dateRangePickerInput {
 	width: 200px;
 }
+
+body.modal-open { position: fixed; }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   select,
@@ -158,6 +155,10 @@ body {
 .reserveAVehicle {
 	box-shadow: 0 3px 0 #ccc;
 	background-color: #fff;
+}
+
+.reservationDates .input-group {
+	margin-bottom: 20px;
 }
 
 .tabbedView {
