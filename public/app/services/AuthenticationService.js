@@ -4,9 +4,13 @@ function AuthenticationService($http, $cookies) {
 
 	function login(userType) {
 
-		console.log($cookies.put('userRole'));
-		user = userType;
-		$cookies.put('userRole', user);
+		var user;
+		var url = '/api/user/' + userType;
+
+		return $http.get(url).then(function success(response) {
+			user = response.data;
+			$cookies.putObject('user', user);
+		});
 	};
 
 	function isLoggedIn() {
@@ -15,24 +19,26 @@ function AuthenticationService($http, $cookies) {
 	};
 
 	function getUser() {
-		return $cookies.get('userRole');
+		return $cookies.getObject("user");
 	};
 
 	function hasAdminRights() {
-		switch(getUser()) {
-			case 'Customer': return false;
-				break;
-			case 'Employee': return true;
-				break;
-			case 'Manager': return true;
-				break;
-			default: return false;
+		if(getUser()){
+			switch(getUser().role) {
+				case 'Customer': return false;
+					break;
+				case 'Employee': return true;
+					break;
+				case 'Manager': return true;
+					break;
+				default: return false;
+			}
 		}
 	}
 
 	function logout() {
 
-		$cookies.remove('userRole');
+		$cookies.remove('user');
 	};
 
 	return ({

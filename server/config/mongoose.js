@@ -12,9 +12,43 @@ module.exports = function(config) {
 
 		mongoose.connection.db.dropCollection('users');
 		mongoose.connection.db.dropCollection('vehicles');
+
+		var User = require('../models/user');
+		var user1 = new User({
+			role: "Customer",
+			firstname: "John",
+			lastname: "Doe",
+			age: 25,
+			dlnum: "123-456-789",
+			email: "jDoe123@gmail.com",
+			phonenum: "0123456789"
+		});
+		user1.save(function(err, user) { user1.id = user.id});
+
+		var user2 = new User({
+			role: "Employee",
+			firstname: "Mary",
+			lastname: "Kay",
+			age: 30,
+			dlnum: "490-578-579",
+			email: "mKay123@gmail.com",
+			phonenum: "3869947389"
+		});
+		user2.save(function(err, user) { user2.id = user.id});
+
+		var user3 = new User({
+			role: "Manager",
+			firstname: "Mike",
+			lastname: "Geary",
+			age: 45,
+			dlnum: "856-927-386",
+			email: "mGeary123@gmail.com",
+			phonenum: "2958473889"
+		});
+		user3.save(function(err, user) { user3.id = user.id});
 		
 		// Create Vehicle Collection
-		var Vehicle = require('../models/vehicle.js');
+		var Vehicle = require('../models/vehicle');
 		Vehicle.create({
 			make: "Make",
 			model: "Model 1",
@@ -24,9 +58,8 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 55,
 			image: "/images/car1.png",
-			reserved: true,
 			owner: {
-				userId: null
+				userId: user1.id
 			}
 		});
 		Vehicle.create({
@@ -38,9 +71,8 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 65,
 			image: "/images/car2.png",
-			reserved: true,
 			owner: {
-				userId: null
+				userId: user2.id
 			}
 		});
 		Vehicle.create({
@@ -52,7 +84,6 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 60,
 			image: "/images/car3.png",
-			reserved: false,
 			owner: {
 				userId: null
 			}
@@ -66,7 +97,6 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 75,
 			image: "/images/car4.png",
-			reserved: false,
 			owner: {
 				userId: null
 			}
@@ -80,21 +110,11 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 90,
 			image: "/images/car5.png",
-			reserved: false,
 			owner: {
-				userId: null
+				userId: user3.id
 			}
 		});
-		
 
-		var userSchema = mongoose.Schema ({
-			role: String
-		});
-
-		var User = mongoose.model('User', userSchema);
-		User.create({role: "Customer"});
-		User.create({role: "Employee"});
-		User.create({role: "Manager"});
 		//console.log("User collections created.");
 	});
 

@@ -1,7 +1,8 @@
-angular.module('app').controller('reserveCtrl', function($scope, VehicleService) {
+angular.module('app').controller('reserveCtrl', function($scope, VehicleService, AuthenticationService) {
 
 	$scope.vehicles = [];
 	$scope.vehicleToReserve = null;
+	$scope.user = AuthenticationService.getUser();
 
 	VehicleService.getAllVehicles().then(function(data) { if(data) $scope.vehicles = data; });
 

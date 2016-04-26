@@ -9,7 +9,6 @@ var schema = mongoose.Schema ({
 			access: String,
 			passengers: Number,
 			price: Number,
-			reserved: Boolean,
 			ownder: {
 				userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 			}
