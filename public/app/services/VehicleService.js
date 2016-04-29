@@ -9,7 +9,14 @@ function VehicleService($http) {
 		});
 	};
 
+	function getReservedVehicles() {
+		return $http.get('/api/vehicles-reserved').then(function success(response) {
+			return response.data;
+		});
+	};
+
 	return ({
-		getAllVehicles: getAllVehicles
+		getAllVehicles: getAllVehicles,
+		getReservedVehicles: getReservedVehicles
 	});
 };

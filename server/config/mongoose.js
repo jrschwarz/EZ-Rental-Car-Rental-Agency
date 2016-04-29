@@ -12,6 +12,7 @@ module.exports = function(config) {
 
 		mongoose.connection.db.dropCollection('users');
 		mongoose.connection.db.dropCollection('vehicles');
+		mongoose.connection.db.dropCollection('reservations');
 
 		var User = require('../models/user');
 		var user1 = new User({
@@ -50,6 +51,7 @@ module.exports = function(config) {
 		// Create Vehicle Collection
 		var Vehicle = require('../models/vehicle');
 		Vehicle.create({
+			name: "Make Model 1",
 			make: "Make",
 			model: "Model 1",
 			year: 2008,
@@ -63,6 +65,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
+			name: "Make Model 2",
 			make: "Make",
 			model: "Model 2",
 			year: 2009,
@@ -76,6 +79,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
+			name: "Make Model 3",
 			make: "Make",
 			model: "Model 3",
 			year: 2010,
@@ -89,6 +93,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
+			name: "Make Model 4",
 			make: "Make",
 			model: "Model 4",
 			year: 2011,
@@ -102,6 +107,7 @@ module.exports = function(config) {
 			}
 		});
 		Vehicle.create({
+			name: "Make Model 5",
 			make: "Make",
 			model: "Model 5",
 			year: 2010,
@@ -115,7 +121,6 @@ module.exports = function(config) {
 			}
 		});
 
-		//console.log("User collections created.");
 	});
 
 	

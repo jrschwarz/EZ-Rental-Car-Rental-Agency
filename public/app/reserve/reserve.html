@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<div ng-include="'app/includes/search-bar.html'"></div>
+			<div ng-include="'app/search/search-bar.html'"></div>
 		</div>
 	</div>
 </div>
@@ -15,13 +15,16 @@
 </div>
 
 <div class="container-fluid main-content">
-	<div class="container-fluid">
+	<div class="container-fluid" >
 		<div class="row">
 				<div class="col-xs-12 reserveAVehicle">
 					<div class="row reservedVehicle noReservations" ng-if="vehicles.length==0">
 						<h5>There are currently no available vehicles to reserve.</h5>
 					</div>
-					<div class="row reservedVehicle" ng-repeat="vehicle in vehicles | orderBy: 'make'">
+					<div class="row reservedVehicle noResults" ng-hide="(vehicles | filter: carFilter.searchContents).length">
+						<h5>There are no vehicles matching your search.</h5>
+					</div>
+					<div class="row reservedVehicle" ng-repeat="vehicle in vehicles | orderBy: '+name' | filter: carFilter.searchContents">
 						<div class="col-sm-4 col-xs-12 text-center">
 							<h3>{{vehicle.make}} {{vehicle.model}}</h3>
 							<img ng-src="{{vehicle.image}}">
@@ -43,8 +46,11 @@
 									<p>{{vehicle.price | currency: $}} per day</p>
 								</div>
 							</div>
-							<div class="editButtons text-right">
+							<div class="text-right" ng-hide="vehicle.owner.userId==user._id">
 								<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createReservationModal" ng-click="reserveVehicle(vehicle)">Reserve Vehicle</button>
+							</div>
+							<div class="text-right" ng-show="vehicle.owner.userId==user._id">
+								<button class="btn btn-sm btn-primary" disabled>Already Reserved!</button>
 							</div>
 						</div>
 					</div>

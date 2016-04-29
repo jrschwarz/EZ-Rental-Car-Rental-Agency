@@ -1,7 +1,11 @@
-angular.module('app', ['ngResource', 'ngRoute', 'ngCookies']);
+angular.module('app', ['ngResource', 'ngRoute', 'ngCookies', 'angularPayments']);
 
-angular.module('app').config(function($routeProvider, $locationProvider) {
+angular.module('app').config(function($windowProvider, $routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
+
+	var $window = $windowProvider.$get();
+	$window.Stripe.setPublishableKey('pk_test_X46G23zw8ZvQd0Irpb2ZqyiS');
+
 	$routeProvider
 		//.when('/', {templateUrl: '/partials/main', controller: 'mainCtrl'});
 		.when('/', {

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var schema = mongoose.Schema ({
+			name: String,
 			make: String,
 			model: String,
 			year: Number,
@@ -9,7 +10,7 @@ var schema = mongoose.Schema ({
 			access: String,
 			passengers: Number,
 			price: Number,
-			ownder: {
+			owner: {
 				userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 			}
 		});

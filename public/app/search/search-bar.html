@@ -1,11 +1,12 @@
-<div class="breadcrumb searchContainer">
+<div class="breadcrumb searchContainer" ng-controller="searchBar">
 	<form class="form searchForm" role="search">
 		<div class="form-group">
 			<div class="input-group">
-				<input class="form-control" type="text" placeholder="Search">
+				<input class="form-control" type="text" placeholder="Search" ng-model="userSearch.searchContents">
 				<div class="input-group-addon searchGroupAddonContainer">
 					<i class="fa fa-search fa-lg" id="searchFormSubmitBtn" aria-hidden="true"></i>
 				</div>
+				{{service}}
 			</div>
 		</div>
 	</form>
