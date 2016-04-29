@@ -1,9 +1,15 @@
-angular.module('app').controller('adminCtrl', function($scope, AuthenticationService, VehicleService) {
+angular.module('app').controller('adminCtrl', function($scope, AuthenticationService, VehicleService, SearchService) {
 
-	$scope.vehicles = [];
+	$scope.reservedVehicles = [];
+	$scope.allVehicles = [];
+	$scope.carFilter = SearchService;
 
 	$scope.user = AuthenticationService.getUser();
 
-	VehicleService.getAllVehicles().then(function(data) { if(data) $scope.vehicles = data; });
+	VehicleService.getReservedVehicles().then(function(data) { if(data) {
+			$scope.reservedVehicles = data; 
+		}
+	});
+	VehicleService.getAllVehicles().then(function(data) { if(data) $scope.allVehicles = data; });
 
 });

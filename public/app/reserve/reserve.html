@@ -15,48 +15,91 @@
 </div>
 
 <div class="container-fluid main-content">
-	<div class="container-fluid" >
-		<div class="row">
-				<div class="col-xs-12 reserveAVehicle">
-					<div class="row reservedVehicle noReservations" ng-if="vehicles.length==0">
-						<h5>There are currently no available vehicles to reserve.</h5>
-					</div>
-					<div class="row reservedVehicle noResults" ng-hide="(vehicles | filter: carFilter.searchContents).length">
-						<h5>There are no vehicles matching your search.</h5>
-					</div>
-					<div class="row reservedVehicle" ng-repeat="vehicle in vehicles | orderBy: '+name' | filter: carFilter.searchContents">
-						<div class="col-sm-4 col-xs-12 text-center">
-							<h3>{{vehicle.make}} {{vehicle.model}}</h3>
-							<img ng-src="{{vehicle.image}}">
-						</div>
-						<div class="col-sm-8 col-xs-12">
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="VehicleInfo">
-										<h4>Vehicle Info</h4>
-										<p><em>Information about this vehicle</em></p>
-										<p>Year: {{vehicle.year}}</p>
-										<p>Color: {{vehicle.color}}</p>
-										<p>Access: {{vehicle.access}}</p>
-										<p>Passengers: {{vehicle.passengers}}</p>
+		<div class="row reservationView">
+
+			<uib-tabset active="active" class="col-xs-12">
+				<uib-tab index="1" heading="Reserve">
+						<div class="col-xs-12 reserveAVehicle">
+							<div class="row reservedVehicle noReservations" ng-if="availVehicles.length==0">
+								<h5>There are currently no available vehicles to reserve.</h5>
+							</div>
+							<div class="row reservedVehicle noResults" ng-hide="(availVehicles | filter: carFilter.searchContents).length">
+								<h5>There are no vehicles matching your search.</h5>
+							</div>
+							<div class="row reservedVehicle" ng-repeat="vehicle in availVehicles | orderBy: '+name' | filter: carFilter.searchContents">
+								<div class="col-sm-4 col-xs-12 text-center">
+									<h3>{{vehicle.make}} {{vehicle.model}}</h3>
+									<img ng-src="{{vehicle.image}}">
+								</div>
+								<div class="col-sm-8 col-xs-12">
+									<div class="row">
+										<div class="col-xs-12 col-sm-6">
+											<div class="VehicleInfo">
+												<h4>Vehicle Info</h4>
+												<p><em>Information about this vehicle</em></p>
+												<p>Year: {{vehicle.year}}</p>
+												<p>Color: {{vehicle.color}}</p>
+												<p>Access: {{vehicle.access}}</p>
+												<p>Passengers: {{vehicle.passengers}}</p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<h4>Price</h4>
+											<p>{{vehicle.price | currency: $}} per day</p>
+										</div>
+									</div>
+									<div class="text-right" ng-hide="vehicle.owner==user._id">
+										<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createReservationModal" ng-click="reserveVehicle(vehicle)">Reserve Vehicle</button>
+									</div>
+									<div class="text-right" ng-show="vehicle.owner==user._id">
+										<button class="btn btn-sm btn-primary" disabled>Already Reserved!</button>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-6">
-									<h4>Price</h4>
-									<p>{{vehicle.price | currency: $}} per day</p>
-								</div>
-							</div>
-							<div class="text-right" ng-hide="vehicle.owner.userId==user._id">
-								<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createReservationModal" ng-click="reserveVehicle(vehicle)">Reserve Vehicle</button>
-							</div>
-							<div class="text-right" ng-show="vehicle.owner.userId==user._id">
-								<button class="btn btn-sm btn-primary" disabled>Already Reserved!</button>
 							</div>
 						</div>
-					</div>
-				</div>
+
+					</uib-tab>
+
+					<uib-tab index="2" heading="My Reservations">
+
+						<div class="col-xs-12 reserveAVehicle">
+							<div class="row reservedVehicle noReservations" ng-if="myVehicles.length==0">
+								<h5>You currently don't have any reserved vehicles</h5>
+							</div>
+							<div class="row reservedVehicle noResults" ng-hide="(myVehicles | filter: carFilter.searchContents).length">
+								<h5>There are no vehicles matching your search.</h5>
+							</div>
+							<div class="row reservedVehicle" ng-repeat="vehicle in myVehicles | orderBy: '+name' | filter: carFilter.searchContents">
+								<div class="col-sm-4 col-xs-12 text-center">
+									<h3>{{vehicle.make}} {{vehicle.model}}</h3>
+									<img ng-src="{{vehicle.image}}">
+								</div>
+								<div class="col-sm-8 col-xs-12">
+									<div class="row">
+										<div class="col-xs-12 col-sm-6">
+											<div class="VehicleInfo">
+												<h4>Vehicle Info</h4>
+												<p><em>Information about this vehicle</em></p>
+												<p>Year: {{vehicle.year}}</p>
+												<p>Color: {{vehicle.color}}</p>
+												<p>Access: {{vehicle.access}}</p>
+												<p>Passengers: {{vehicle.passengers}}</p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<h4>Price</h4>
+											<p>{{vehicle.price | currency: $}} per day</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+
+					</uib-tab>
+
+				</uib-tabset>
 			</div>
-		</div>
 	</div>
 
 	<div ng-include="'app/includes/createReservationModal.html'"></div>

@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'ngCookies', 'angularPayments']);
+angular.module('app', ['ngResource', 'ngRoute', 'ngCookies', 'angularPayments', 'ui.bootstrap']);
 
 angular.module('app').config(function($windowProvider, $routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);

@@ -60,9 +60,7 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 55,
 			image: "/images/car1.png",
-			owner: {
-				userId: user1.id
-			}
+			owner: user1.id
 		});
 		Vehicle.create({
 			name: "Make Model 2",
@@ -74,9 +72,7 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 65,
 			image: "/images/car2.png",
-			owner: {
-				userId: user2.id
-			}
+			owner: user2.id
 		});
 		Vehicle.create({
 			name: "Make Model 3",
@@ -88,9 +84,7 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 60,
 			image: "/images/car3.png",
-			owner: {
-				userId: null
-			}
+			owner: null
 		});
 		Vehicle.create({
 			name: "Make Model 4",
@@ -102,9 +96,7 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 75,
 			image: "/images/car4.png",
-			owner: {
-				userId: null
-			}
+			owner: null
 		});
 		Vehicle.create({
 			name: "Make Model 5",
@@ -116,9 +108,7 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 90,
 			image: "/images/car5.png",
-			owner: {
-				userId: user3.id
-			}
+			owner: user3.id
 		});
 
 	});

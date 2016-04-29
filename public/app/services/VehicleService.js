@@ -9,14 +9,28 @@ function VehicleService($http) {
 		});
 	};
 
-	function getReservedVehicles() {
-		return $http.get('/api/vehicles-reserved').then(function success(response) {
+	function getAvailVehicles() {
+		return $http.get('/api/vehicles-avail').then(function succeed(response) {
 			return response.data;
 		});
 	};
 
+	function getReservedVehicles() {
+		return $http.get('/api/vehicles-reserved').then(function success(response) {
+			console.log(response.data);
+		});
+	};
+
+	function getMyVehicles(userId) {
+		return $http.get('/api/vehicles-reserved/' + userId).then(function success(response) {
+			console.log(response.data);
+		})
+	}
+
 	return ({
 		getAllVehicles: getAllVehicles,
-		getReservedVehicles: getReservedVehicles
+		getReservedVehicles: getReservedVehicles,
+		getAvailVehicles: getAvailVehicles,
+		getMyVehicles: getMyVehicles
 	});
 };

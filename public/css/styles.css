@@ -173,6 +173,10 @@ body {
 }
 
 .reserveAVehicle {
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	margin-bottom: 30px;
 	box-shadow: 0 3px 0 #ccc;
 	background-color: #fff;
 }
@@ -181,7 +185,7 @@ body {
 	margin-bottom: 20px;
 }
 
-.tabbedView {
+.adminTabbedView {
 	margin-top: -20px;
 }
 

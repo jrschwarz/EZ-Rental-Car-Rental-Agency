@@ -4,7 +4,8 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
 	$scope.dateRangeErrors = false;
 	$scope.formErrors = false;
 	$scope.processError = false;
-	$scope.vehicles = [];
+	$scope.availVehicles = [];
+    $scope.myVehicles = [];
 	$scope.vehicleToReserve = null;
 	$scope.user = AuthenticationService.getUser();
 
@@ -21,7 +22,8 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
 		cvc: null
 	};
 
-	VehicleService.getAllVehicles().then(function(data) { if(data){ $scope.vehicles = data; }});
+	VehicleService.getAvailVehicles().then(function(data) { if(data){ $scope.availVehicles = data; }});
+    VehicleService.getMyVehicles($scope.user._id).then(function(data) { if(data) { $scope.myVehicles = data; }});
 	$scope.$watchGroup(['dateRange.fromDate', 'dateRange.toDate'], function(newValue, oldValue, scope) { $scope.dateValidation(); });
 
     console.log($scope.user);
@@ -114,7 +116,7 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
         $scope.formErrors = false;
         $scope.processError = false;
         $scope.vehicleToReserve = null;
-        VehicleService.getAllVehicles().then(function(data) { if(data){ $scope.vehicles = data; console.log(data);}});
+        VehicleService.getAvailVehicles().then(function(data) { if(data){ $scope.availVehicles = data; console.log(data);}});
 
     };
 

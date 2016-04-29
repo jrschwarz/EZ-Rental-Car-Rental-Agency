@@ -10,9 +10,7 @@ var schema = mongoose.Schema ({
 			access: String,
 			passengers: Number,
 			price: Number,
-			owner: {
-				userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-			}
+			owner: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 		});
 
 module.exports = mongoose.model('Vehicle', schema);
