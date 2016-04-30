@@ -16,18 +16,17 @@ module.exports = function(app) {
 
 	app.get('/api/vehicles-reserved', function(req, res) {
 
-		Reservation.findOne({})
+		Reservation.find({})
 				.populate('owner')
 				.populate('vehicle')
 				.exec(function(err, reservations) {
-					if (err) console.log(err);
 					res.json(reservations);
 
 				});
 	});
 
 	app.get('/api/vehicles-reserved/:id', function(req,res) {
-		Reservation.find({owner: req.params.id})
+		Reservation.find({'owner': req.params.id})
 				.populate('vehicle')
 				.exec(function(err, reservations) {
 					res.json(reservations);
@@ -36,7 +35,7 @@ module.exports = function(app) {
 
 	app.get('/api/vehicles-avail', function(req,res) {
 
-		Vehicle.find({'owner.userId':null}, function(err, vehicles) {
+		Vehicle.find({'owner':null}, function(err, vehicles) {
 			res.json(vehicles);
 		});
 	});

@@ -9,6 +9,11 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
 	$scope.vehicleToReserve = null;
 	$scope.user = AuthenticationService.getUser();
 
+    $scope.tabs = {
+        availVehicles: false,
+        myReservations: true
+    };
+
 	$scope.dateRange = {
 		fromDate: new Date().toString('MM/dd/yyyy'),
 		toDate: new Date().toString('MM/dd/yyyy')
@@ -23,10 +28,15 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
 	};
 
 	VehicleService.getAvailVehicles().then(function(data) { if(data){ $scope.availVehicles = data; }});
-    VehicleService.getMyVehicles($scope.user._id).then(function(data) { if(data) { $scope.myVehicles = data; }});
+    VehicleService.getMyVehicles(AuthenticationService.getUser()._id).then(function(data) { if(data) { $scope.myVehicles = data; }});
 	$scope.$watchGroup(['dateRange.fromDate', 'dateRange.toDate'], function(newValue, oldValue, scope) { $scope.dateValidation(); });
 
-    console.log($scope.user);
+    $scope.noSearchResults = function(arrayLength) {
+
+        if(arrayLength > 0) return false;
+        else if(!($scope.carFilter.searchContents)) return false;
+        else return true;
+    };
 
 	$scope.reserveVehicle = function(vehicle) {
 		$scope.vehicleToReserve = vehicle;
@@ -116,7 +126,8 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
         $scope.formErrors = false;
         $scope.processError = false;
         $scope.vehicleToReserve = null;
-        VehicleService.getAvailVehicles().then(function(data) { if(data){ $scope.availVehicles = data; console.log(data);}});
+        VehicleService.getAvailVehicles().then(function(data) { if(data) $scope.availVehicles = data; });
+        VehicleService.getMyVehicles($scope.user._id).then(function(data) { if(data) { $scope.myVehicles = data; }});
 
     };
 

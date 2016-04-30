@@ -22,4 +22,5 @@ angular.module('app').controller('navbarCtrl', function($scope, $window, $http, 
 		toastr.success('Successfully logged out');
 	};
 
+
 });

@@ -17,13 +17,13 @@ function VehicleService($http) {
 
 	function getReservedVehicles() {
 		return $http.get('/api/vehicles-reserved').then(function success(response) {
-			console.log(response.data);
+			return response.data;
 		});
 	};
 
 	function getMyVehicles(userId) {
 		return $http.get('/api/vehicles-reserved/' + userId).then(function success(response) {
-			console.log(response.data);
+			return response.data;
 		})
 	}
 

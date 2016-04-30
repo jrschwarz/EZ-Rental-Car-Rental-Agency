@@ -54,25 +54,25 @@ module.exports = function(config) {
 			name: "Make Model 1",
 			make: "Make",
 			model: "Model 1",
-			year: 2008,
+			year: 2010,
 			color: "Silver",
 			access: "4-door",
 			passengers: 4,
 			price: 55,
 			image: "/images/car1.png",
-			owner: user1.id
+			owner: null
 		});
 		Vehicle.create({
 			name: "Make Model 2",
 			make: "Make",
 			model: "Model 2",
-			year: 2009,
+			year: 2010,
 			color: "Black",
 			access: "4-door",
 			passengers: 4,
 			price: 65,
 			image: "/images/car2.png",
-			owner: user2.id
+			owner: null
 		});
 		Vehicle.create({
 			name: "Make Model 3",
@@ -108,9 +108,153 @@ module.exports = function(config) {
 			passengers: 4,
 			price: 90,
 			image: "/images/car5.png",
-			owner: user3.id
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 6",
+			make: "Make",
+			model: "Model 6",
+			year: 2014,
+			color: "Red",
+			access: "4-door",
+			passengers: 4,
+			price: 85,
+			image: "/images/car6.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 7",
+			make: "Make",
+			model: "Model 7",
+			year: 2014,
+			color: "White",
+			access: "2-door",
+			passengers: 4,
+			price: 140,
+			image: "/images/car7.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 8",
+			make: "Make",
+			model: "Model 8",
+			year: 2014,
+			color: "White",
+			access: "4-door",
+			passengers: 4,
+			price: 100,
+			image: "/images/car8.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 9",
+			make: "Make",
+			model: "Model 9",
+			year: 2015,
+			color: "Yellow",
+			access: "2-door",
+			passengers: 4,
+			price: 120,
+			image: "/images/car9.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 10",
+			make: "Make",
+			model: "Model 10",
+			year: 2015,
+			color: "Silver",
+			access: "2-door",
+			passengers: 4,
+			price: 150,
+			image: "/images/car10.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 11",
+			make: "Make",
+			model: "Model 11",
+			year: 2013,
+			color: "Red",
+			access: "2-door",
+			passengers: 2,
+			price: 170,
+			image: "/images/car11.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 12",
+			make: "Make",
+			model: "Model 12",
+			year: 2015,
+			color: "White",
+			access: "4-door",
+			passengers: 5,
+			price: 110,
+			image: "/images/car12.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 13",
+			make: "Make",
+			model: "Model 13",
+			year: 2015,
+			color: "Red",
+			access: "4-door",
+			passengers: 4,
+			price: 90,
+			image: "/images/car13.png",
+			owner: null
 		});
 
+		Vehicle.create({
+			name: "Make Model 14",
+			make: "Make",
+			model: "Model 14",
+			year: 2015,
+			color: "Dark Blue",
+			access: "4-door",
+			passengers: 4,
+			price: 150,
+			image: "/images/car14.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 15",
+			make: "Make",
+			model: "Model 15",
+			year: 2014,
+			color: "Red",
+			access: "4-door",
+			passengers: 4,
+			price: 140,
+			image: "/images/car15.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 16",
+			make: "Make",
+			model: "Model 16",
+			year: 2014,
+			color: "Black",
+			access: "2-door",
+			passengers: 4,
+			price: 125,
+			image: "/images/car16.png",
+			owner: null
+		});
+		Vehicle.create({
+			name: "Make Model 17",
+			make: "Make",
+			model: "Model 17",
+			year: 2012,
+			color: "Silver",
+			access: "4-door",
+			passengers: 5,
+			price: 150,
+			image: "/images/car17.png",
+			owner: null
+		});
 	});
 
 	

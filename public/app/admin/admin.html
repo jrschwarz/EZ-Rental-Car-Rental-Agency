@@ -18,50 +18,58 @@
 	<div class="row reservationView">
 
 		<div class="col-xs-12 text-right">
-			<button type="button" class="btn btn-primary btn-md">+ Create</button>
+			<button type="button" class="btn btn-primary btn-md" id="adminCreateReservation">+ <span>Create</span></button>
 		</div>
 
-			<uib-tabset active="active" class="col-xs-12">
+			<uib-tabset active="active" class="col-xs-12" style="margin-top:-20px;">
 				<uib-tab index="1" heading="Reservations">
 
 					<div class="col-xs-12 reservation">
 						<div class="row reservedVehicle noReservations" ng-if="reservedVehicles.length==0">
 							<h5>There are currently no reservations.</h5>
 						</div>
-						<!-- <div class="row reservedVehicle noResults" ng-hide="(reservedVehicles | filter: carFilter.searchContents).length">
+						<div class="row reservedVehicle noResults" ng-show="noSearchResults((reservedVehicles | filter: carFilter.searchContents).length)">
 							<h5>There are no vehicles matching your search.</h5>
-						</div> -->
-						<div class="row reservedVehicle" ng-repeat="vehicle in reservedVehicles | orderBy: '+name' | filter: carFilter.searchContents">
+						</div>
+						<div class="row reservedVehicle" ng-repeat="vehicle in reservedVehicles | orderBy: 'name' | filter: carFilter.searchContents">
 							<div class="col-sm-4 col-xs-12 text-center">
-								<h3>{{vehicle.make}} {{vehicle.model}}</h3>
-								<img ng-src="{{vehicle.image}}">
+								<h3>{{vehicle.vehicle[0].make}} {{vehicle.vehicle[0].model}}</h3>
+								<img class="vehicleImg" ng-src="{{vehicle.vehicle[0].image}}">
 							</div>
 							<div class="col-sm-8 col-xs-12">
 								<div class="row">
-									<div class="col-xs-12 col-sm-6">
+									<div class="col-xs-12 col-sm-4">
 										<div class="VehicleInfo">
 											<h4>Vehicle Info</h4>
 											<p><em>Information about this vehicle</em></p>
-											<p>Year: {{vehicle.year}}</p>
-											<p>Color: {{vehicle.color}}</p>
-											<p>Access: {{vehicle.access}}</p>
-											<p>Passengers: {{vehicle.passengers}}</p>
+											<p>Year: {{vehicle.vehicle[0].year}}</p>
+											<p>Color: {{vehicle.vehicle[0].color}}</p>
+											<p>Access: {{vehicle.vehicle[0].access}}</p>
+											<p>Passengers: {{vehicle.vehicle[0].passengers}}</p>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6">
+									<div class="col-xs-12 col-sm-4">
 										<div class="DriverInfo">
 											<h4>Driver's Info</h4>
-											<p><span class="bold">Name:</span> John Doe</p>
-											<p><span class="bold">Age:</span> 99</p>
+											<p><span class="bold">Name:</span> {{vehicle.owner[0].firstname}} {{vehicle.owner[0].lastname}}</p>
+											<p><span class="bold">Age:</span> {{vehicle.owner[0].age}}</p>
+											<p><span class="bold">DL #:</span> {{vehicle.owner[0].dlnum}}</p>
+											<p><span class="bold">E-mail:</span> {{vehicle.owner[0].email}}</p>
+											<p><span class="bold">Phone:</span> {{vehicle.owner[0].phonenum}}</p>
 										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
 										<div class="paymentInfo">
 											<h4>Payment Info</h4>
-											<p><span class="bold">Visa</span> **** **** **** 1234</p>
+											<p><span class="bold">{{vehicle.payment.cardType}}</span> {{vehicle.payment.maskedNum}}</p>
+											<p><span class="bold">Price:</span> {{vehicle.vehicle[0].price | currency: $}} per day</p>
+											<p><span class="bold">From:</span> {{vehicle.startDate | date:'MM/dd/yyyy'}}</p>
+											<p><span class="bold">To:</span> {{vehicle.endDate | date:'MM/dd/yyyy'}}</p>
 										</div>
 									</div>
 								</div>
 								<div class="editButtons text-right">
-									<button class="btn btn-sm btn-warning" ng-click="getVehicles()">Edit</button>
+									<button class="btn btn-sm btn-warning">Edit</button>
 									<button class="btn btn-sm btn-danger">Process Return</button>
 								</div>
 							</div>
@@ -76,13 +84,13 @@
 						<div class="row reservedVehicle noReservations" ng-if="allVehicles.length==0">
 							<h5>There are currently no reservations.</h5>
 						</div>
-						<div class="row reservedVehicle noResults" ng-hide="((allVehicles | filter: carFilter.searchContents).length)&&(allVehicles.length>0)">
+						<div class="row reservedVehicle noResults" ng-show="noSearchResults((allVehicles | filter: carFilter.searchContents).length)">
 							<h5>There are no vehicles matching your search.</h5>
 						</div>
-						<div class="row reservedVehicle" ng-repeat="vehicle in allVehicles | orderBy: '+name' | filter: carFilter.searchContents">
+						<div class="row reservedVehicle" ng-repeat="vehicle in allVehicles | orderBy: 'name' | filter: carFilter.searchContents">
 							<div class="col-sm-4 col-xs-12 text-center">
 								<h3>{{vehicle.make}} {{vehicle.model}}</h3>
-								<img ng-src="{{vehicle.image}}">
+								<img class="vehicleImg" ng-src="{{vehicle.image}}">
 							</div>
 							<div class="col-sm-8 col-xs-12">
 								<div class="row">
@@ -101,12 +109,12 @@
 										<p>{{vehicle.price | currency: $}} per day</p>
 										<br>
 										<h4>Status</h4>
-										<p ng-hide="vehicle.owner.userId==null" class="text-success">Available</p>
-										<p ng-show="vehicle.owner.userId==null" class="text-danger">Rented Out</p>
+										<p ng-show="vehicle.owner==null" class="text-success">Available</p>
+										<p ng-hide="vehicle.owner==null" class="text-danger">Rented Out</p>
 									</div>
 								</div>
 								<div class="editButtons text-right">
-									<button class="btn btn-sm btn-warning" ng-click="getVehicles()">Edit</button>
+									<button class="btn btn-sm btn-warning">Edit</button>
 								</div>
 							</div>
 						</div>
