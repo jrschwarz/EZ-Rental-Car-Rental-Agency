@@ -31,7 +31,7 @@
 						<div class="row reservedVehicle noResults" ng-show="noSearchResults((reservedVehicles | filter: carFilter.searchContents).length)">
 							<h5>There are no vehicles matching your search.</h5>
 						</div>
-						<div class="row reservedVehicle" ng-repeat="vehicle in reservedVehicles | orderBy: 'model' | filter: carFilter.searchContents">
+						<div class="row reservedVehicle" ng-repeat="vehicle in reservedVehicles | filter: carFilter.searchContents | orderBy: 'model' ">
 							<div class="col-sm-4 col-xs-12 text-center">
 								<h3>{{vehicle.vehicle[0].make}} {{vehicle.vehicle[0].model}}</h3>
 								<img class="vehicleImg" ng-src="{{vehicle.vehicle[0].image}}">
@@ -87,7 +87,7 @@
 						<div class="row reservedVehicle noResults" ng-show="noSearchResults((allVehicles | filter: carFilter.searchContents).length)">
 							<h5>There are no vehicles matching your search.</h5>
 						</div>
-						<div class="row reservedVehicle" ng-repeat="vehicle in allVehicles | orderBy: 'model' | filter: carFilter.searchContents">
+						<div class="row reservedVehicle" ng-repeat="vehicle in allVehicles | filter: carFilter.searchContents | orderBy: 'model'">
 							<div class="col-sm-4 col-xs-12 text-center">
 								<h3>{{vehicle.make}} {{vehicle.model}}</h3>
 								<img class="vehicleImg" ng-src="{{vehicle.image}}">
