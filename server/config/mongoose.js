@@ -255,7 +255,7 @@ module.exports = function(config) {
 	// 		image: "/images/car17.png",
 	// 		owner: null
 	// 	});
-	// });
+	});
 
 	
 }
