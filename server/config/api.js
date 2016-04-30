@@ -60,11 +60,14 @@ module.exports = function(app) {
 				maskedNum: "**** **** **** " + req.body.payment.card.last4,
 				token: req.body.payment.id
 			}
-		});
+		}, function(err, reservation) {
 
-		Vehicle.update({_id: req.body.vehicle._id}, {
-			owner: req.body.user._id
-		}, function(err, vehicle) {console.log(vehicle);});
-		res.end();	
+			Vehicle.update({_id: req.body.vehicle._id}, {
+				owner: req.body.user._id
+			}, function(err, vehicle) { 
+				res.end(); 
+			});
+		});
+			
 	});
 };
