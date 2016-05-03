@@ -19,7 +19,7 @@
 
 			<uib-tabset active="tabs.availVehicles" class="col-xs-12">
 				<uib-tab index="1" heading="Available">
-						<div class="col-xs-12 reserveAVehicle">
+						<div class="col-xs-12 reserveAVehicle Reservation">
 							<div class="row reservedVehicle noReservations" ng-if="availVehicles.length==0">
 								<h5>There are currently no available vehicles to reserve.</h5>
 							</div>
@@ -59,7 +59,7 @@
 
 					<uib-tab index="2" active="tabs.myReservations" heading="My Reservations">
 
-						<div class="col-xs-12 reserveAVehicle">
+						<div class="col-xs-12 reserveAVehicle reservation">
 							<div class="row reservedVehicle noReservations" ng-if="myVehicles.length==0">
 								<h5>You currently don't have any reserved vehicles</h5>
 							</div>

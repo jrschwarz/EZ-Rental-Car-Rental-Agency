@@ -1,4 +1,4 @@
-angular.module('app').controller('navbarCtrl', function($scope, $window, $http, $location, AuthenticationService) {
+angular.module('app').controller('navbarCtrl', function($scope, $window, $http, $location, AuthenticationService, ToastService) {
 
 	$scope.goHome = function() {
 		$window.location.href = "/";
@@ -9,17 +9,18 @@ angular.module('app').controller('navbarCtrl', function($scope, $window, $http, 
 	};
 
 	$scope.isLoggedIn = function() {
-		if(AuthenticationService.getUser() != undefined) return true;
-		else return false;
+		return AuthenticationService.isLoggedIn();
 	};
 
+    $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+
 	$scope.logout = function() {
+		var user = AuthenticationService.getUser().role;
 		AuthenticationService.logout();
 		$location.path('/');
-		toastr.options = {
-			"timeOut": "1000"
-		};
-		toastr.success('Successfully logged out');
+		ToastService.successToast('Successfully logged out', user);
 	};
 
 

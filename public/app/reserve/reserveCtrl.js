@@ -1,4 +1,4 @@
-angular.module('app').controller('reserveCtrl', function($document, $location, $scope, VehicleService, AuthenticationService, SearchService, ReservationService, StripeService) {
+angular.module('app').controller('reserveCtrl', function($document, $location, $scope, VehicleService, AuthenticationService, SearchService, ReservationService, StripeService, ToastService) {
 	
 	$scope.carFilter = SearchService;
 	$scope.dateRangeErrors = false;
@@ -98,11 +98,11 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
         .then(function(data){
             if(data){
                 $document.find("#createReservationModal").modal('toggle');
-                toastr.success("Successfully Reserved!", $scope.vehicleToReserve.name);
+                ToastService.successToast("Successfully Reserved!", $scope.vehicleToReserve.name);
                 resetData();
             }
             else {
-                toastr.error("Couldn't reserve due to error.");
+                ToastService.errorToast("Couldn't reserve due to error.", $scope.vehicleToReserve.name);
             }
         });
 

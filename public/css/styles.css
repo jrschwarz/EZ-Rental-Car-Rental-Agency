@@ -1,7 +1,29 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
 	background-color: #fff;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
+
+	margin: 0 0 40px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color: #B6BDC4;
+    padding: 10px;
+    color: black;
+    box-shadow: 0 -3px 0 #fff;
+    font-weight: 500;
+}
+
+.applicationView{
+	margin-top: 90px;
 }
 
 #createReservationModal .vehicleImage {
@@ -166,9 +188,7 @@ body {
 }
 
 .searchContainer {
-	margin-top: -30px;
-	padding-top: 30px;
-	height: 80px;
+	padding-top: 20px;
 	margin-bottom: 20px;
 	box-shadow: 0 3px 0 #ccc;
 }
@@ -223,14 +243,53 @@ body {
 	margin-left: 10px;
 }
 
+#toast-container > .alert {
+    background-image: none !important;
+}
+
+#toast-container > .alert:before {
+    position: fixed;
+    font-family: FontAwesome;
+    font-size: 24px;
+    float: left;
+    color: #FFF;
+    padding-right: 0.5em;
+    margin: auto 0.5em auto -1.5em;
+}
+
 #toast-container > div {
     opacity:1;
 }
-.toast-success {
-  background-color: #5CB85C;
+#toast-container > .alert-info:before {
+    content: "\f05a";
 }
-.toast-error {
-  background-color: #D9534F;
+#toast-container > .alert-info:before,
+#toast-container > .alert-info {
+    color: #31708f;
+}
+
+#toast-container > .alert-success:before {
+    content: "\f00c";
+}
+#toast-container > .alert-success:before,
+#toast-container > .alert-success {
+    color: #3c763d;
+}
+
+#toast-container > .alert-warning:before {
+    content: "\f06a";
+}
+#toast-container > .alert-warning:before,
+#toast-container > .alert-warning {
+    color: #8a6d3b;
+}
+
+#toast-container > .alert-danger:before {
+    content: "\f071";
+}
+#toast-container > .alert-danger:before,
+#toast-container > .alert-danger {
+    color: #a94442;
 }
 
 .noButton {

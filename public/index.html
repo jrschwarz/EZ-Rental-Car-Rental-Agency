@@ -28,12 +28,14 @@
 		<script src="/vendor/angular-payments/lib/angular-payments.js"></script>
 		<script src="/app/filters/tel.js"></script>
 		<script src="/app/services/AuthenticationService.js"></script>
+		<script src="/app/services/ToastService.js"></script>
 		<script src="/app/services/StripeService.js"></script>
 		<script src="/app/services/VehicleService.js"></script>
 		<script src="/app/services/ReservationService.js"></script>
 		<script src="/app/services/SearchService.js"></script>
 		<script src="/app/search/searchBarCtrl.js"></script>
 		<script src="/app/navbar/navbarCtrl.js"></script>
+		<script src="/app/footer/footerCtrl.js"></script>
 		<script src="/app/admin/adminCtrl.js"></script>
 		<script src="/app/account/loginCtrl.js"></script>
 		<script src="/app/reserve/reserveCtrl.js"></script>
@@ -42,7 +44,9 @@
 
 		<div ng-include="'app/navbar/navbar.html'"></div>
 
-		<div ng-view></div>
+		<div class="applicationView" ng-view></div>
+		
+		<div ng-include="'app/footer/footer.html'"></div>	
 	</body>
 </html>
 
