@@ -1,15 +1,17 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<div ng-include="'app/search/search-bar.html'"></div>
+<div class="topPageContent">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div ng-include="'app/search/search-bar.html'"></div>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="container-fluid">
-	<div class="row text-center pageTitle">
-		<div class="col-xs-12">
-			<h3><span class="label label-info"><i class="fa fa-md fa-car"></i> Reserve a Vehicle</span></h3>
+	<div class="container-fluid">
+		<div class="row text-center pageTitle">
+			<div class="col-xs-12">
+				<h3><span class="label label-info"><i class="fa fa-md fa-car"></i> Reserve a Vehicle</span></h3>
+			</div>
 		</div>
 	</div>
 </div>
@@ -17,8 +19,8 @@
 <div class="container-fluid main-content">
 		<div class="row reservationView">
 
-			<uib-tabset active="tabs.availVehicles" class="col-xs-12">
-				<uib-tab index="1" heading="Available">
+			<uib-tabset active="active" class="col-xs-12">
+				<uib-tab index="0" heading="Available">
 						<div class="col-xs-12 reserveAVehicle Reservation">
 							<div class="row reservedVehicle noReservations" ng-if="availVehicles.length==0">
 								<h5>There are currently no available vehicles to reserve.</h5>
@@ -54,11 +56,9 @@
 								</div>
 							</div>
 						</div>
-
 					</uib-tab>
 
-					<uib-tab index="2" active="tabs.myReservations" heading="My Reservations">
-
+					<uib-tab index="1" heading="My Reservations">
 						<div class="col-xs-12 reserveAVehicle reservation">
 							<div class="row reservedVehicle noReservations" ng-if="myVehicles.length==0">
 								<h5>You currently don't have any reserved vehicles</h5>
@@ -100,7 +100,6 @@
 							</div>
 						</div>
 						</div>
-
 					</uib-tab>
 
 				</uib-tabset>

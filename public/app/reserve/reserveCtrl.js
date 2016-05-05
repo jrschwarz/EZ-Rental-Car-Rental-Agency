@@ -89,6 +89,27 @@ angular.module('app').controller('reserveCtrl', function($document, $location, $
     	StripeService.generateCardData($scope.card, processedCardHandler);
     };
 
+    $scope.resetReservationForm = function() {
+        $scope.dateRange = {
+            fromDate: new Date().toString('MM/dd/yyyy'),
+            toDate: new Date().toString('MM/dd/yyyy')
+        };
+
+        $scope.card = {
+            type: null,
+            name: null,
+            number: null,
+            expiry: null,
+            cvc: null
+        };
+
+        $scope.dateRangeErrors = false;
+        $scope.formErrors = false;
+        $scope.processError = false;
+        $scope.vehicleToReserve = null;
+
+    };
+
     function processReserve(cardResponse) {
     	//Convert string dates to Date format
     	$scope.dateRange.fromDate = Date.parse($scope.dateRange.fromDate);

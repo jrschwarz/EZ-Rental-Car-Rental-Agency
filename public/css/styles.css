@@ -3,7 +3,7 @@ html {
     min-height: 100%;
 }
 body {
-	background-color: #fff;
+	background-color: #f5f5f5;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 
@@ -22,8 +22,14 @@ footer {
     font-weight: 500;
 }
 
-.applicationView{
-	margin-top: 90px;
+.topPageContent {
+	background-color: #fff;
+	padding-top: 55px;
+    padding-bottom: 30px;
+}
+
+.applicationView {
+	margin-top: 50px;
 }
 
 #createReservationModal .vehicleImage {
@@ -114,7 +120,6 @@ footer {
 
 .main-content {
 	margin-top: 20px;
-	padding-top: 20px;
 	padding-bottom: 20px;
 	background-color: #f5f5f5;
 	border: 0;
@@ -165,7 +170,7 @@ footer {
 
 .navbar {
 	background-color: #fff;
-	box-shadow: 0 3px 0 #ccc;
+	box-shadow: 0 1px 5px #ccc;
 	z-index: 1000;
 }
 
