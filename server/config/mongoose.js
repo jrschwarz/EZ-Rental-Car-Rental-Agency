@@ -10,6 +10,7 @@ module.exports = function(config) {
 	db.once('open', function callback() {
 		console.log('ezrental db opened');
 
+		/*
 		mongoose.connection.db.dropCollection('users');
 		mongoose.connection.db.dropCollection('vehicles');
 		mongoose.connection.db.dropCollection('reservations');
@@ -255,6 +256,7 @@ module.exports = function(config) {
 			image: "/images/car17.png",
 			owner: null
 		});
+		*/
 	});
 
 	
