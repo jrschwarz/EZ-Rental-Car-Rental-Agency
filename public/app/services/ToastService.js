@@ -13,14 +13,14 @@ function ToastService() {
 			    }
 			};
 
-	function successToast(message, title = "") {
-
+	function successToast(message, title) {
+		if(!title) title = "";
 		toastr.success(message, title);
 
 	};
 
 	function errorToast(message, title = "") {
-
+		if(!title) title = "";
 		toastr.error(message, title);
 	};
 
