@@ -19,7 +19,7 @@ function ToastService() {
 
 	};
 
-	function errorToast(message, title = "") {
+	function errorToast(message, titles) {
 		if(!title) title = "";
 		toastr.error(message, title);
 	};
